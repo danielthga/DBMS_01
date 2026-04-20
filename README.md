@@ -521,7 +521,9 @@ SQL is called a *declarative* language: you describe *what* you want, not *how* 
 > I felt this while I wanted to get the min max and avg, because I did not need to write any code for the calculation.
 
 > **Screenshot 7:** Take a final screenshot of your terminal showing the SQLite prompt with a query of your own invention on the `readings` table — one you came up with yourself that goes beyond the tasks above — and insert it here.
+> 
 > Get the counts of all values:
+> 
 > <img width="408" height="100" alt="grafik" src="https://github.com/user-attachments/assets/ca081bb8-846b-4422-a9c0-632aaf80d7c4" />
 
 
