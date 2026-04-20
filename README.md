@@ -370,15 +370,18 @@ EOF
 
 **Question 2.1:** The shell solution filters by date using `grep -rh "2026-03"`. What problem could arise if a sensor value happened to contain the string `2026-03` — for example as part of an error note? How does the SQL solution handle this problem?
 
-> *Your answer:*
+> If a sensor value contains the string this line will be printed two times because the shell command finds the string two times in one row. In SQL only real values are accepted for the sensor value, so this error couldnt happen. Also SQL only looks into the timemstamp column to filter for the date.
 
 **Question 2.2:** The SQL solution uses `timestamp LIKE '2026-03-%'` for the date filter instead of a proper date function. Name one advantage and one disadvantage of this approach.
 
-> *Your answer:*
+> This is a fast way to filter the dates, but only work when the date is given in the yyyy-mm-dd format. Its just a texted based search and not a specific time filter.
 
 **Question 2.3:** The SQL solution returns results sorted by `ORDER BY value_celsius DESC`. The shell solution does not include this sorting. Extend the shell solution to also sort by temperature in descending order and write your command here.
 
-> *Your answer (extended shell command):*
+> grep -rh "2026-03" sensordata/ \
+>  | grep -v "^timestamp" \
+>  | awk -F',' '$4 > 25.0 {print $1, $2, $4}'
+>  | sort -t',' -k3,3nr
 
 ---
 
