@@ -291,7 +291,7 @@ Answer the following questions in your own words and add your answers directly b
 
 **Question 1.3:** The SQL solution uses `ORDER BY timestamp` even though `timestamp` is stored as type `TEXT`. Why does chronological sorting still work correctly? Under what condition would it fail?
 
-> *Your answer:*
+> It works correct because the date is stored in a YYYY-MM-DD format and when this is sorted lexicographically it will be the same as sorted chronological. When the date is stored in another format like YYYY-DD-MM the lexicographically order would be another then the chronological.
 
 ---
 
@@ -363,7 +363,8 @@ EOF
 
 > **Screenshot 5:** Take a screenshot showing the output of the Task 2 SQLite query and insert it here.
 >
-> `[insert screenshot]`
+> <img width="526" height="403" alt="grafik" src="https://github.com/user-attachments/assets/0760c692-994a-4138-952e-e079c1bb869a" />
+
 
 ### Questions for Task 2
 
