@@ -378,10 +378,10 @@ EOF
 
 **Question 2.3:** The SQL solution returns results sorted by `ORDER BY value_celsius DESC`. The shell solution does not include this sorting. Extend the shell solution to also sort by temperature in descending order and write your command here.
 
-> grep -rh "2026-03" sensordata/ \
->  | grep -v "^timestamp" \
->  | awk -F',' '$4 > 25.0 {print $1, $2, $4}'
->  | sort -t',' -k3,3nr
+> grep -rh "2026-03" sensordata/
+> | grep -v "^timestamp"
+> | awk -F',' '$4 > 25.0 {print $1, $2, $4}'
+> | sort -t' ' -k3 -rn
 
 ---
 
@@ -400,7 +400,7 @@ for sensor in T01 T02 T03 T04; do
   grep -h "$sensor" sensordata/${sensor}_*.csv \
     | grep -v "^timestamp" \
     | cut -d',' -f4 \
-    | awk '
+    | awk ' grep -rh "2026-03" sensordata/   | grep -v "^timestamp"   | awk -F',' '$4 > 25.0 {print $1, $2, $4}'   | sort -t' ' -k3 -rn
         BEGIN { min=9999; max=-9999; sum=0; n=0 }
         { v=$1+0; if(v<min) min=v; if(v>max) max=v; sum+=v; n++ }
         END { printf "min=%.1f  max=%.1f  avg=%.1f\n", min, max, sum/n }
@@ -468,21 +468,31 @@ EOF
 
 > **Screenshot 6:** Take a screenshot showing the output of the Task 3 SQLite query — the four rows with sensor statistics — and insert it here.
 >
-> `[insert screenshot]`
+> <img width="430" height="228" alt="grafik" src="https://github.com/user-attachments/assets/661395be-eafc-447d-a6c1-49ab85c26885" />
+
 
 ### Questions for Task 3
 
 **Question 3.1:** The `awk` solution initialises `min=9999` and `max=-9999`. What would happen if all temperature values in the dataset were greater than 9999? How could the initialisation be made more robust?
 
-> *Your answer:*
+> If all values are greater then 9999 the minimum would be 9999 because it will not be changed, the maximum would be ok. I would start the initialisation with the first values and not with a constant.
 
 **Question 3.2:** The SQL solution uses `GROUP BY sensor_id`. What would the query return *without* this clause — i.e. if you ran `SELECT sensor_id, MIN(value_celsius), MAX(value_celsius), ROUND(AVG(value_celsius), 1) FROM readings`? Try it and describe the result.
 
-> *Your answer:*
+> You will only get the result for the first sensor T01. 
 
 **Question 3.3:** Extend the SQL query with an additional column `COUNT(*) AS num_readings` that shows the total number of measurements for each sensor. Write the complete extended query here.
 
-> *Your answer (extended SQL query):*
+> sqlite3 sensors.db <<'EOF'
+>SELECT sensor_id,
+>       MIN(value_celsius) AS min_temp,
+>       MAX(value_celsius) AS max_temp,
+>       ROUND(AVG(value_celsius), 1) AS avg_temp,
+>       COUNT(*) AS num_readings
+>FROM   readings
+>GROUP  BY sensor_id
+>ORDER  BY sensor_id;
+>EOF
 
 ---
 
@@ -493,26 +503,27 @@ After completing all three tasks, answer the following questions:
 **Question A — Writing effort:**
 Which approach was easier to write correctly on the first try? Explain which properties of each language contributed to this.
 
-> *Your answer:*
+> Writing SQL code was easier because you have more specialized functions for data handling. In shell you need to build these function in a complex command. 
 
 **Question B — Extensibility:**
 What would you need to change in the shell solution if a fifth sensor `T05` were added? What about the SQL solution? Which approach scales better — and why?
 
-> *Your answer:*
+> In the shell commands we would have to add the new sensor manualy, in the SQL commands we can use the same commands.
 
 **Question C — Performance:**
 The shell solution reads files from disk on every invocation. A database can cache frequently queried data in memory. What does this mean for performance with 10 000 sensors and multi-year measurement data?
 
-> *Your answer:*
+> Without caching we would have a lot of disk readings so it would not be that efficient.
 
 **Question D — Declarative vs. imperative:**
 SQL is called a *declarative* language: you describe *what* you want, not *how* to compute it. Bash/awk, by contrast, are *imperative*: you write step by step how the result is to be computed. In which of the three tasks did you feel this difference most clearly? Justify your choice.
 
-> *Your answer:*
+> I felt this while I wanted to get the min max and avg, because I did not need to write any code for the calculation.
 
 > **Screenshot 7:** Take a final screenshot of your terminal showing the SQLite prompt with a query of your own invention on the `readings` table — one you came up with yourself that goes beyond the tasks above — and insert it here.
->
-> `[insert screenshot]`
+> Get the counts of all values:
+> <img width="408" height="100" alt="grafik" src="https://github.com/user-attachments/assets/ca081bb8-846b-4422-a9c0-632aaf80d7c4" />
+
 
 ---
 
