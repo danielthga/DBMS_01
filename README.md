@@ -271,7 +271,11 @@ EOF
 
 > **Screenshot 4:** Take a screenshot showing the output of the Task 1 SQLite query (the first and last few rows are sufficient), and insert it here.
 >
-> `[insert screenshot]`
+> <img width="472" height="467" alt="grafik" src="https://github.com/user-attachments/assets/c47ed71b-ba7b-4f89-aa37-84bfa43bba9c" />
+
+<img width="314" height="75" alt="grafik" src="https://github.com/user-attachments/assets/e383e1c4-a026-4503-9f22-c6d1f9bff0af" />
+
+
 
 ### Questions for Task 1
 
