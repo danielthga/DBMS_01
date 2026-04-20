@@ -110,8 +110,8 @@ cat sensordata/T01_2026-03-01.csv
 
 > **Screenshot 2:** Take a screenshot showing the output of `ls sensordata/ | head -8` and the contents of one CSV file, and insert it here.
 >
-> `<img width="448" height="248" alt="grafik" src="https://github.com/user-attachments/assets/332e6628-0945-47d2-ab59-f6cf518965c8" />
-`
+> <img width="448" height="248" alt="grafik" src="https://github.com/user-attachments/assets/332e6628-0945-47d2-ab59-f6cf518965c8" />
+
 
 ### What does the script do, line by line?
 
