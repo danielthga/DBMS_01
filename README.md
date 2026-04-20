@@ -61,7 +61,8 @@ If any of the above commands return `command not found`, resolve the installatio
 
 > **Screenshot 1:** Take a screenshot of your terminal showing all four successful version checks and insert it here.
 >
-> `[insert screenshot]`
+> <img width="669" height="509" alt="grafik" src="https://github.com/user-attachments/assets/ea4f3834-4620-4863-b0d0-91a86fc58137" />
+
 
 ---
 
