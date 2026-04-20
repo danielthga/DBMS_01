@@ -201,7 +201,8 @@ echo "Import complete."
 
 > **Screenshot 3:** Take a screenshot showing the successful execution of the import script and the result of the `COUNT(*)` query, and insert it here.
 >
-> `[insert screenshot]`
+> <img width="633" height="307" alt="grafik" src="https://github.com/user-attachments/assets/c3f8a2dc-0be3-4f5c-aebc-118279c3ccda" />
+
 
 ---
 
