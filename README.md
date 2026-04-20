@@ -272,8 +272,8 @@ EOF
 > **Screenshot 4:** Take a screenshot showing the output of the Task 1 SQLite query (the first and last few rows are sufficient), and insert it here.
 >
 > <img width="472" height="467" alt="grafik" src="https://github.com/user-attachments/assets/c47ed71b-ba7b-4f89-aa37-84bfa43bba9c" />
-
-<img width="314" height="75" alt="grafik" src="https://github.com/user-attachments/assets/e383e1c4-a026-4503-9f22-c6d1f9bff0af" />
+>
+> <img width="314" height="75" alt="grafik" src="https://github.com/user-attachments/assets/e383e1c4-a026-4503-9f22-c6d1f9bff0af" />
 
 
 
@@ -283,11 +283,11 @@ Answer the following questions in your own words and add your answers directly b
 
 **Question 1.1:** Why is `grep -v "^timestamp"` needed in the shell solution even though the files are already filtered with `grep -h "T02"`? Could this step be omitted? Justify your answer.
 
-> *Your answer:*
+> For now grep -v is not needed because the grep -h will only return lines where T02 is inclucded. But if we modify the header and write something with T02 to it, the header line would not be filtered out.
 
 **Question 1.2:** The shell solution uses `sensordata/T02_*.csv` as a file pattern, even though `grep -h "T02"` already filters for `T02`. Why is the file pattern still important — and what would happen if you used `sensordata/*.csv` instead?
 
-> *Your answer:*
+> The output of the command line is the same, but instead of only T02 files, all sensor files are processed. So the command will take more time to run.
 
 **Question 1.3:** The SQL solution uses `ORDER BY timestamp` even though `timestamp` is stored as type `TEXT`. Why does chronological sorting still work correctly? Under what condition would it fail?
 
